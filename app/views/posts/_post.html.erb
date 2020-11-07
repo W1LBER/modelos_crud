@@ -1,0 +1,4 @@
+<tr id="post_<%= post.id %>">
+  <td><%= post.content %></td>
+  <td><%= link_to "[X]", post, method: :delete, remote:true, data: {confirm: '¿Estás seguro de que quieres borrarlo?'}%></td>
+</tr>

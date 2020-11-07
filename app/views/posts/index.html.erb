@@ -1,0 +1,27 @@
+<h1>Posts</h1>
+<hr>
+
+<table class="table table-bordered w-25">
+  <tr class="bg-info">
+    <th>Content</th>
+    <th></th>
+  </tr>
+
+
+  <tbody id="my_posts">
+  <% @posts.each do |post| %>
+  <tr id="post_<%= post.id %>">
+    <td><%= post.content %></td>
+    <td><%= link_to "[X]", post, method: :delete, data: {confirm: '¿Estás seguro de que quieres borrarlo?'}%></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+<%= form_with(model: @post, id:'post_form', local:true, class:'form-inline') do |form| %>
+  <%= form.text_field :content, placeholder:'Enter a text', class:'form-control', required:true%>
+  <%= form.submit 'Add', data: {disable_with: 'Espere un segundo', confirm: '¿Estás seguro que quieres agregar el post?'}, class:'btn btn-primary' %>
+
+<% end %>
